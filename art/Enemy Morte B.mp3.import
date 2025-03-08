@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cofspht0kt5e2"
+path="res://.godot/imported/Enemy Morte B.mp3-fccde092ebe378bbc1e54dc282fef302.mp3str"
+
+[deps]
+
+source_file="res://art/Enemy Morte B.mp3"
+dest_files=["res://.godot/imported/Enemy Morte B.mp3-fccde092ebe378bbc1e54dc282fef302.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://yitoanflldle"]
+
+[ext_resource type="Script" path="res://fly_pc.gd" id="1_ofl0m"]
+[ext_resource type="Texture2D" uid="uid://civulty2gkjna" path="res://art/conceptsJam01.png" id="2_3fhn0"]
+[ext_resource type="AudioStream" uid="uid://cofspht0kt5e2" path="res://art/Enemy Morte B.mp3" id="3_1glpv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_521vk"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(3110, 600, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ovvh"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(3410, 600, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ibo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_521vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ovvh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk0fb"]
+size = Vector2(192, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4swc5"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(1020, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5x8y"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(1270, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42p7k"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(1520, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa7sc"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(1770, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d10jm"]
+atlas = ExtResource("2_3fhn0")
+region = Rect2(2020, 1470, 250, 290)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxwyk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4swc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5x8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42p7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa7sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d10jm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="fly_pc" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_ofl0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4ibo6")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 18)
+shape = SubResource("RectangleShape2D_rk0fb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1glpv")
+volume_db = 3.0
+
+[node name="Dead" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_sxwyk")
+
+[connection signal="animation_finished" from="Dead" to="." method="_on_dead_animation_finished"]

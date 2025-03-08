@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cehn88v5quk2m"
+path="res://.godot/imported/Smasher 312 Custom.ttf-0dd97ac2885d3859664f4dc2f20022eb.fontdata"
+
+[deps]
+
+source_file="res://art/Smasher 312 Custom.ttf"
+dest_files=["res://.godot/imported/Smasher 312 Custom.ttf-0dd97ac2885d3859664f4dc2f20022eb.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

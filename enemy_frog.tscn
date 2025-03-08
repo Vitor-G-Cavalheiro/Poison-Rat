@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://icmw6dl4yk7b"]
+
+[ext_resource type="Texture2D" uid="uid://civulty2gkjna" path="res://art/conceptsJam01.png" id="1_c57ck"]
+[ext_resource type="Script" path="res://enemy_frog.gd" id="1_ke8qw"]
+[ext_resource type="AudioStream" uid="uid://cofspht0kt5e2" path="res://art/Enemy Morte B.mp3" id="3_mmej4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6pd"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(3445, 1060, 180, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwyff"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(2700, 1060, 180, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1btes"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(2880, 1060, 180, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7uld"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(3260, 1060, 180, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5hyq"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(3085, 1060, 180, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rkam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw6pd")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwyff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1btes")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7uld")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5hyq")
+}],
+"loop": false,
+"name": &"Preparing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu28f"]
+size = Vector2(83, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4swc5"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(1020, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5x8y"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(1270, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42p7k"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(1520, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa7sc"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(1770, 1470, 250, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d10jm"]
+atlas = ExtResource("1_c57ck")
+region = Rect2(2020, 1470, 250, 290)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfw7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4swc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5x8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42p7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa7sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d10jm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Enemy_frog" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_ke8qw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6rkam")
+animation = &"Fall"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 4.5)
+shape = SubResource("RectangleShape2D_fu28f")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mmej4")
+volume_db = 3.0
+
+[node name="Dead" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_sfw7x")
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="animation_finished" from="Dead" to="." method="_on_dead_animation_finished"]

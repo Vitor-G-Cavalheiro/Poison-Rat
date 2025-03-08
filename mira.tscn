@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnpl40816q3iw"]
+
+[ext_resource type="Texture2D" uid="uid://civulty2gkjna" path="res://art/conceptsJam01.png" id="1_igoxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n57nl"]
+atlas = ExtResource("1_igoxp")
+region = Rect2(2370, 720, 170, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b65x"]
+atlas = ExtResource("1_igoxp")
+region = Rect2(2540, 720, 170, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abw05"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n57nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b65x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg7tr"]
+size = Vector2(102, 88)
+
+[node name="Mira" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_abw05")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -2)
+shape = SubResource("RectangleShape2D_kg7tr")

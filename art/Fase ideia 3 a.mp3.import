@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1dqtt11xjafu"
+path="res://.godot/imported/Fase ideia 3 a.mp3-47bfbfde4b150d24bf88bdf8140a77b2.mp3str"
+
+[deps]
+
+source_file="res://art/Fase ideia 3 a.mp3"
+dest_files=["res://.godot/imported/Fase ideia 3 a.mp3-47bfbfde4b150d24bf88bdf8140a77b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

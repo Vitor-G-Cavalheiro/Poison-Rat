@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ma4fcuc78bjq"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_b2nby"]
+[ext_resource type="Texture2D" uid="uid://nmfqadsa5s4o" path="res://placeholder.png" id="2_v45cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db4fp"]
+size = Vector2(79, 192)
+
+[sub_resource type="GDScript" id="GDScript_vhv6g"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tse3"]
+radius = 401.001
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_b2nby")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v45cv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, 21)
+shape = SubResource("RectangleShape2D_db4fp")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_vhv6g")
+
+[node name="attackRange" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2tse3")
